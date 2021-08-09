@@ -1,6 +1,9 @@
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 
+import Layout from '../../../../components/layout'
+import ThreadList from '../../../../components/threadlist'
+
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
@@ -19,8 +22,9 @@ export default function Board({ board }: ServerSideProps) {
 
   return (
     <div>
-      <h1>{ serverId } { boardId }</h1>
-      <span>{ board }</span>
+      <Layout>
+	<ThreadList serverId={serverId} boardId={boardId} />
+      </Layout>
     </div>
   )
 }
