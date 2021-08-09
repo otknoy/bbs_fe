@@ -1,10 +1,12 @@
 import useSWR from "swr";
 import { BoardGroups, BoardList } from "./entity";
 
+const origin = 'http://localhost:8080'
+
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export function useBoardList() {
-  const { data, error } = useSWR('http://localhost:8080/boardList', fetcher)
+  const { data, error } = useSWR(`${origin}/boardList`, fetcher)
 
   return {
     boardList: convertBoardGroups(data),
@@ -34,3 +36,15 @@ function convertBoardList(json: any): BoardList {
   }))
 }
 
+export function useThreadList(serverId: string, boardId: string) {
+  console.log(serverId, boardId)
+  const { data, error } = useSWR(`${origin}/${serverId}/${boardId}/threadList`, fetcher)
+
+  console.log(data)
+
+  return {
+    threadList: data,
+    isLoading: !error && !data,
+    isError: error,
+  }
+}

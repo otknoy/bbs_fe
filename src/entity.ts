@@ -8,7 +8,7 @@ export type BoardGroup = {
 export type BoardList = Board[]
 
 export type Board = {
-	name: string,
-	serverId: string,
-	boardId: string,
+  name: string,
+  serverId: string,
+  boardId: string,
 }

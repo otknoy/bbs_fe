@@ -1,19 +1,15 @@
 import BoardList from './boardlist'
 
+const style = {
+  display: 'flex',
+}
+
 export default function Layout({ children }) {
   return (
-    <>
-      <header>
-	header
-      </header>
-
+    <div style={style}>
       <BoardList />
 
       <div>{children}</div>
-      
-      <footer>
-	footer
-      </footer>
-    </>
+    </div>
   )
 }
